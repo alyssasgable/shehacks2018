@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html>
+<div class="contain">
+<input id="em" type="email" placeholder="Email"></input>
+<input id="pass" type="password" placeholder="Password"></input>
+<button id="btnLogin" class="btn btn-action">Login</button>
+<button id="btnSign" class="btn btn-secondary">Sign Up</button>
+<button id="btnLogOut" class="btn btn-hide">Log Out</button>
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyAuqC_jiAQQPI2N8-WpWCfgjGkXyk6X-kY",
+    authDomain: "shehacks2018-ba1ea.firebaseapp.com",
+    databaseURL: "https://shehacks2018-ba1ea.firebaseio.com",
+    projectId: "shehacks2018-ba1ea",
+    storageBucket: "",
+    messagingSenderId: "570658888356"
+  };
+  firebase.initializeApp(config);
+  const txtEmail = document.getElementById('em');
+  const txtPass = document.getElementById('pass');
+  const txtLogin = document.getElementById('btnLogin');
+  const txtSign = document.getElementById('btnSign');
+
+  btnLogin.addEventListener('click',e => {
+    const email = txtEmail.value;
+    const pass = txtPass.value;
+    const auth = firebase.auth();
+    const promise = auth.SignInWithEmailAndPassword(email,password);
+    promise
+      .then(user=>console.log(user));
+      .catch(e=>console.log(e.message));
+
+  });
+  btnLogout.addEventListener('click',e => {
+    firebase.auth().signOut();
+  });
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if(firebaseUser) {
+      console.log(firebaseUser);
+      btnLogout.classList.remove('hide');
+    }
+    else {
+      console.log('not logged in');
+      btnLogout.classList.add('hide');
+    }
+  });
+  var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  email: "youremail",
+  password: "yourpass";
+  database: "mydb"
+});
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  //Make SQL statement:
+  var sql = "INSERT INTO customers (email, password) VALUES ?";
+  //Make an array of values:
+  var values = [
+    ['nshah3@ucsc.edu', 'lol'],
+    ['alyssasgable@gmail.com', 'lmao'],
+  ];
+  //Execute the SQL statement, with the value array:
+  con.query(sql, [values], function (err, result) {
+    if (err) throw err;
+    console.log("Number of records inserted: " + result.affectedRows);
+  });
+});
+
+</script>
+
+
+</html>
