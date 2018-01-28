@@ -7,17 +7,41 @@
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
       <link href="css/homepage.css" rel="stylesheet" type="text/css" />
       <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet'>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <script src="homepage.js"></script>
+
+      <script>
+        var config = {
+          apiKey: "AIzaSyAuqC_jiAQQPI2N8-WpWCfgjGkXyk6X-kY",
+          authDomain: "shehacks2018-ba1ea.firebaseapp.com",
+          databaseURL: "https://shehacks2018-ba1ea.firebaseio.com",
+          projectId: "shehacks2018-ba1ea",
+          storageBucket: "shehacks2018-ba1ea.appspot.com",
+          messagingSenderId: "570658888356"
+        };
+        firebase.initializeApp(config);
+      </script>
   </head>
   <body>
   <div class = "banner">
       <div class = "sparecent-container">
-          <div class = "sparecent">SpareCent </div>
-          <div class ="sign-out-button"><a href= "">Sign Out</a></div>
+          <div class = "sparecent">SpareCent</div>
+
+          <div style="float:right;" class ="sign-out-button">
+          <p id="currentUser"></p>
+          <a href= "">Sign Out</a>
+         </div>
       </div>
+
+      <script>
+          var currentUser = localStorage.getItem("currentUser");
+          document.getElementById("currentUser").innerHTML = localStorage.getItem("currentUser");
+      </script>
+
   </div>
   <div class = "transaction-donation-wrapper">
       <table id="transactions-container">
@@ -42,8 +66,19 @@
   </div>
   </body>
   <script>
-  window.onload = function loadTable(){
-      console.log("This function was reached");
+  window.onload = function loadTable() {
+    // var currentUser = localStorage.getItem("currentUser");
+    // var db = firebase.firestore();
+    //
+    // db.collection(currentUser)
+    //     .get()
+    //     .then(function(querySnapshot) {
+    //         querySnapshot.forEach(function(doc) {
+    //             // doc.data() is never undefined for query doc snapshots
+    //             console.log(doc.id, " => ", doc.data());
+    //             transactionsJSON = doc.data();
+    //         });
+    //       })
       var transactionsJSON = [ 12.50, 5.25, 1.65, 1.87, 3.12];
       var sum = 0;
       var table = document.getElementById("transactions-container");
