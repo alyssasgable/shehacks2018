@@ -5,9 +5,8 @@
 }
 
 .banner{
-
     padding-left: 15%;
-    padding-right: 15%;
+    padding-right: 5%;
     padding-bottom: 120px;
 }
 a{
@@ -20,12 +19,11 @@ a{
 .total{
     font-family: 'Cookie';
     color: #67e58b;
-    font-size: 120px;
+    font-size: 140px;
     margin: 20%;
     margin-top: 0;
 }
 #dynamic-total{
-    font-size: 70px;
     color:#67e58b;
 }
 .total-and-donate{
@@ -44,9 +42,6 @@ a{
     border: solid;
     border-color: #edf7ea;
 }
-.tables{
-
-}
 body{
     background-color: #67e58b;
     font-family: 'Roboto', sans-serif;
@@ -57,7 +52,6 @@ body{
     height: 50px;
     font-size: 45px;
     font-family: 'Cookie';
-    margin-bottom: 0;
 
 }
 .total-banner-wrapper{
@@ -68,7 +62,7 @@ body{
     border-bottom: #edf7ea;
 }
 .sign-out-button{
-    padding-top: 40px;
+    padding-top: 10px;
 }
 .transactions-container{
     top: 10px;
@@ -89,20 +83,10 @@ tr{
 }
 table {
     border-collapse: collapse;
-    width: 40%;
-    float: right;
-    margin-top: 2%;
-    margin-right: 15%;
-    border: solid;
-    border-color: #edf7ea;
-    border-radius: .55rem;
-
+    width: 100%;
 }
 th, td {
     text-align: left;
     padding: 8px;
 }
-tr:nth-child(even){
-    background-color: white;
-    color: #67e58b;
-}
+tr:nth-child(even){background-color: #f2f2f2}
