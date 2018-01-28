@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)file:///C:/Users/epw00/Documents/github/shehacks2018/SheHacks2018/view/signup.html -->
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyAuqC_jiAQQPI2N8-WpWCfgjGkXyk6X-kY",
+      authDomain: "shehacks2018-ba1ea.firebaseapp.com",
+      databaseURL: "https://shehacks2018-ba1ea.firebaseio.com",
+      projectId: "shehacks2018-ba1ea",
+      storageBucket: "shehacks2018-ba1ea.appspot.com",
+      messagingSenderId: "570658888356"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+  <script type="text/javascript">
+
+      var db = firebase.firestore();
+
+        simTransaction('alyssasgable@gmail.com')
+        function writeUserData(email) {
+
+          db.collection("sparecent").doc("users").set({
+            email: email,
+            balance: 0
+          })
+
+        }
+          function simTransaction(email) {
+            var trans = getTransaction();
+
+            db.collection(email).doc().set({
+              transaction: trans,
+            })
+
+          }
+
+        function donTranslation(balance, transaction) {
+          var donation = Math.ceil(transaction) - transaction;
+           var donBalance = donation;
+           return donBalance;
+        }
+
+        function getTransaction() {
+            var max=50;
+            var transaction = Math.random(10,max+1);
+            return transaction.toFixed(2);
+        }
+
+
+        var uiConfig = {
+          callbacks: {
+            signInSuccess: function(currentUser, credential, redirectUrl) {
+              //ADD USER TO DATABASE
+              console.log(currentUser);
+              writeUserData(currentUser.email);
+
+              window.onload = function() {
+               localStorage.setItem("currentUser",currentUser.email);
+            }
+              return true;
+            }
+          },
+          // signInSuccessUrl: '<url-to-redirect-to-on-success>',
+          signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          ],
+          // Terms of service url.
+          tosUrl: 'homepage.html'
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+
+
+      </script>
+</head>
+  <style>
+  div {
+    background-color: lightgrey;
+    width: 300px;
+    border: 25px mistyrose;
+    padding: 25px;
+    margin: 25px;
+}
+div {
+  background-color: lightgrey;
+  width: 300px;
+  border: 25px solid green;
+  padding: 70px;
+  margin: 25px;
+}
+
+</style>
+
+
+
+<body bgcolor="#67e58b">
+  <center> <h1>
+
+ <p><font size="10">Welcome To SpareCents!</font> </p>
+ </h1> </center>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<h2> About Us</h2>
+
+
+<div class="aboutus">This site was designed to help raise money for countries
+  who have faced a disaster. The individual will make a transaction on any item and will be asked if they want to donate. If the person will like to donate their transaction will be rounded up to the nearnest dollar. </div>
+
+  <img style="float:right;" src="./signup_files/imageforsignup.jpg" alt="Money" width="400" height="300">
+  <img align="right" src="./signup_files/diaster.jpg" alt="Devastation" width="400" height="300">
+  <h3>Recent Diaster </h3>
+
+
+  <div align="top" class="disaster"> In 2017 the World experienced some intense hurricanes across the coast. Many people went out they way to help others in hard tme. We believe our app would be a great tool to help diaster victims get the help they deserve. </div>
+
+
+
+
+</body></html>
