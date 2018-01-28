@@ -21,6 +21,7 @@ module.exports = function (router) {
     app.use(enrouten({
       routes: [ -
          { path: '/',    method: 'GET', handler: require(/Users/alyssa/github/shehacks2018/SheHacks2018/view/login.html) },
+         { path: '/home',    method: 'GET', handler: require(/Users/alyssa/github/shehacks2018/SheHacks2018/homepage.html) }
          // { path: '/foo', method: 'GET', handler: require('./routes/foo') },
          // { path: '/admin', method: 'GET', handler: require('./routes/foo'), middleware: [isAuthenticated] }
      ]
