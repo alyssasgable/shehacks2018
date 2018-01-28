@@ -5,9 +5,8 @@
 }
 
 .banner{
-
     padding-left: 15%;
-    padding-right: 15%;
+    padding-right: 5%;
     padding-bottom: 120px;
 }
 a{
@@ -63,7 +62,7 @@ body{
     border-bottom: #edf7ea;
 }
 .sign-out-button{
-    padding-top: 40px;
+    padding-top: 10px;
 }
 .transactions-container{
     top: 10px;
